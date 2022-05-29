@@ -1,0 +1,16 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Backend for Mobiera's Full Stack Test",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/main.ts",
+    "build": "tsc --build",
+    "clean": "tsc --build --clean"
+  },
+  "author": "sfmunera10",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
+}
