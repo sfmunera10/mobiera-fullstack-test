@@ -1,0 +1,16 @@
+.layout__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  min-height: 100vh;
+  text-align: center;
+  background-color: #d4edeb;
+}
+
+.footer {
+  font-size: medium;
+  margin: 30px;
+  color: #424242;
+  z-index: 1;
+}

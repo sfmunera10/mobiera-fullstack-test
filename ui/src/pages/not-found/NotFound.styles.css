@@ -1,0 +1,24 @@
+.not__found {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.not__found h2 {
+  text-align: center;
+  border-radius: 8px;
+  color: #08211f;
+  padding: 10px;
+  background-color: #ffaa80;
+  font-size: x-large;
+  margin: 100px;
+}
+
+@media (max-width: 800px) {
+  .not__found h2 {
+    padding: 5px;
+    font-size: small;
+  }
+}

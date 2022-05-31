@@ -1,0 +1,88 @@
+.user__element__container {
+  display: flex;
+  flex-direction: column;
+  color: #08211f;
+  background-color: #ffeee6;
+  border-radius: 6px;
+  padding: 20px;
+  margin: 20px;
+  cursor: pointer;
+}
+
+.user__element__container:hover {
+  transition: 0.17s;
+  transform: translateY(-10px);
+}
+
+.user__element__container:active {
+  transition: 0.17s;
+  transform: scale(0.9);
+}
+
+.user__element__profile__picture {
+  display: inline-flex;
+  width: 150px;
+  height: 150px;
+  align-items: center;
+  align-content: center;
+  margin: 30px;
+}
+
+.user__element__profile__picture img {
+  width: 100%;
+  border-radius: 6px;
+}
+
+.user__element__grouping {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.input__user__element {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 10px 10px 0;
+}
+
+.input__user__element label {
+  font-size: medium;
+  text-align: start;
+  margin-bottom: 5px;
+}
+
+.input__user__element input {
+  background-color: white;
+  border: none;
+  outline: none;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.user__element__signature__picture {
+  display: inline-flex;
+  width: 100px;
+  height: 100px;
+  align-items: center;
+  align-content: center;
+  margin: 10px;
+}
+
+.user__element__signature__picture img {
+  width: 100%;
+  border-radius: 6px;
+}
+
+.user__element__fingerprint__picture {
+  display: inline-flex;
+  width: 100px;
+  height: 100px;
+  align-items: center;
+  align-content: center;
+  margin: 10px;
+}
+
+.user__element__fingerprint__picture img {
+  width: 100%;
+  border-radius: 6px;
+}

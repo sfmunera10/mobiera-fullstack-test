@@ -2,6 +2,7 @@ version: '3.8'
 services:
   db:
     image: mysql
+    container_name: mysql
     restart: unless-stopped
     env_file: ./.env
     environment:
@@ -11,7 +12,7 @@ services:
       - $MYSQLDB_LOCAL_PORT:$MYSQLDB_DOCKER_PORT
     volumes:
       - db:/var/lib/mysql
-      - ./database:/docker-entrypoint-initdb.d
+      # - ./database:/docker-entrypoint-initdb.d
     networks:
       - backend
   backend:
@@ -30,25 +31,52 @@ services:
       - MYSQLDB_DATABASE=$MYSQLDB_DATABASE
       - MYSQLDB_LOCAL_PORT=$MYSQLDB_LOCAL_PORT
       - CLIENT_ORIGIN=$CLIENT_ORIGIN
+      - MOBIERA_API_URL=$MOBIERA_API_URL
     networks:
       - backend
-      - frontend
-  frontend:
+      - ui
+  ui:
     depends_on:
-      - backend
+      - db
     build:
-      context: ./frontend
+      context: ./ui
+      dockerfile: ui.Dockerfile
       args:
         - USER_DIRECTORY_API_BASE_URL=$USER_DIRECTORY_API_BASE_URL
+        - CLIENT_ORIGIN=$CLIENT_ORIGIN
     env_file: ./.env
     ports:
       - $REACT_LOCAL_PORT:$REACT_LOCAL_PORT
     environment:
+      - FILE_SERVER_PORT:$FILE_SERVER_PORT
       - REACT_LOCAL_PORT:$REACT_LOCAL_PORT
     networks:
-      - frontend
+      - ui
+  image:
+    depends_on:
+      - db
+    build:
+      context: ./ui
+      dockerfile: image.Dockerfile
+      args:
+        - USER_DIRECTORY_API_BASE_URL=$USER_DIRECTORY_API_BASE_URL
+        - CLIENT_ORIGIN=$CLIENT_ORIGIN
+    env_file: ./.env
+    ports:
+      - $FILE_SERVER_PORT:$FILE_SERVER_PORT
+    environment:
+      - FILE_SERVER_PORT:$FILE_SERVER_PORT
+      - REACT_LOCAL_PORT:$REACT_LOCAL_PORT
+    networks:
+      - image
+      - ui
 volumes:
   db:
 networks:
   backend:
-  frontend:
+  ui:
+  image:
+
+# After successful docker-compose run following commands in backend folder
+# npx prisma migrate dev --name init
+# npx prisma db seed
