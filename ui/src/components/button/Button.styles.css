@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans&display=swap");
+
+.btn__primary {
+  background-color: #ff5500;
+  cursor: pointer;
+  color: black;
+  font-size: large;
+  font-weight: bold;
+  font-family: "DM Sans", sans-serif;
+}
+
+.btn__primary:hover {
+  transition: 0.17s;
+  transform: translateY(-4px);
+}
+
+.btn__primary:active {
+  transition: 0.17s;
+  transform: scale(0.9);
+}
+
+.btn__secondary {
+  background-color: #26a69d;
+  cursor: pointer;
+  color: black;
+  font-size: large;
+  font-weight: bold;
+  font-family: "DM Sans", sans-serif;
+}
+
+.btn__secondary:hover {
+  transition: 0.17s;
+  transform: translateY(-4px);
+}
+
+.btn__secondary:active {
+  transition: 0.17s;
+  transform: scale(0.9);
+}

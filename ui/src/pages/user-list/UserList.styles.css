@@ -1,0 +1,21 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #a8dbd8;
+  margin: 30px;
+  padding: 20px;
+  border-radius: 6px;
+  width: 90%;
+  color: #08211f;
+  font-size: x-large;
+}
+
+.user__list__container {
+  width: 90%;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-evenly;
+}
