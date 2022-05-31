@@ -1,0 +1,56 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum BloodType {
+  A
+  B
+  AB
+  O
+  Undefined
+}
+
+enum RH {
+  Positive
+  Negative
+  Undefined
+}
+
+enum Gender {
+  Male
+  Female
+  Other
+  Undefined
+}
+
+model User {
+  id                 Int       @id @unique @default(autoincrement()) @db.UnsignedInt
+  givenNames         String    @default("-") @db.VarChar(100)
+  familyNames        String    @default("-") @db.VarChar(100)
+  docIdNumber        Int       @unique @db.UnsignedInt
+  signatureFileUrl   String    @default("-") @db.VarChar(100)
+  photoFileUrl       String    @default("-") @db.VarChar(100)
+  countryCode        String    @default("-") @db.VarChar(2)
+  state              String    @default("-") @db.VarChar(50)
+  city               String    @default("-") @db.VarChar(50)
+  fingerprintFileUrl String    @default("-") @db.VarChar(100)
+  birthDate          DateTime  @db.Date
+  height             Int?      @db.UnsignedInt
+  bloodType          BloodType @default(Undefined)
+  rh                 RH        @default(Undefined)
+  gender             Gender    @default(Undefined)
+  expeditionDate     DateTime  @db.Date
+  expeditionPlace    String    @default("-") @db.VarChar(100)
+  createdDatetime    DateTime  @db.DateTime
+  updatedDatetime    DateTime  @updatedAt
+
+  @@unique([givenNames, familyNames])
+}
